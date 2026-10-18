@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import "./style.css";
 import Headphones3D from "./Headphones3D";
@@ -7,6 +8,7 @@ import bot from "./assets/bot.png";
 import pro from "./assets/pro.png";
 import air from "./assets/air.png";
 import introVideo from "./assets/intro.mp4";
+
 const products = [
   {
     name: "ORBIT ONE",
@@ -76,11 +78,6 @@ const features = [
 function GlassBox() {
   return (
     <div className="glass-box-scene">
-      {/* Real rotating 3D headphones */}
-      
-      
-
-      {/* Transparent presentation box */}
       <svg
         className="glass-box-svg"
         viewBox="0 0 440 400"
@@ -100,13 +97,11 @@ function GlassBox() {
           </linearGradient>
         </defs>
 
-        {/* Handles */}
         <g fill="none" stroke="url(#glassEdge)" strokeWidth="4">
           <path d="M140 95 V63 Q140 43 160 43 H190 Q210 43 210 63 V95" />
           <path d="M230 95 V63 Q230 43 250 43 H280 Q300 43 300 63 V95" />
         </g>
 
-        {/* Glass faces */}
         <g stroke="url(#glassEdge)" strokeWidth="2">
           <path
             d="M65 125 L220 65 L375 125 L220 190 Z"
@@ -123,7 +118,6 @@ function GlassBox() {
           <path d="M65 295 L220 230 L375 295" fill="none" opacity=".55" />
         </g>
 
-        {/* Glass reflections */}
         <path
           d="M83 145 V280 L204 337"
           fill="none"
@@ -146,8 +140,9 @@ function GlassBox() {
           opacity=".7"
         />
       </svg>
-     <div className="box-headphones3d">
-        <HeadphonesBox3D  />
+
+      <div className="box-headphones3d">
+        <HeadphonesBox3D />
       </div>
 
       <div className="box-orbit orbit-path-one">
@@ -160,7 +155,6 @@ function GlassBox() {
 
       <div className="box-floor-glow" />
     </div>
-    
   );
 }
 
@@ -173,13 +167,10 @@ function App() {
   const [flippedProducts, setFlippedProducts] = useState([]);
   const [flippedFeatures, setFlippedFeatures] = useState([]);
 
- useEffect(() => {
-  const timer = setTimeout(() => {
-    setLoading(false);
-  }, 5000);
-
-  return () => clearTimeout(timer);
-}, []);
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 5000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (!notice) return;
@@ -220,33 +211,33 @@ function App() {
 
   const handleNav = () => setMenuOpen(false);
 
- if (loading) {
-  return (
-    <div className="loading-screen">
-      <video
-        className="loading-video"
-        src={introVideo}
-        autoPlay
-        muted
-        playsInline
-        preload="auto"
-      />
+  if (loading) {
+    return (
+      <div className="loading-screen">
+        <video
+          className="loading-video"
+          src={introVideo}
+          autoPlay
+          muted
+          playsInline
+          preload="auto"
+        />
 
-      <div className="loading-video-overlay" />
+        <div className="loading-video-overlay" />
 
-      <div className="loader-content">
-        <div className="loader-logo">
-          O<span>.</span>
+        <div className="loader-content">
+          <div className="loader-logo">
+            O<span>.</span>
+          </div>
+          <p>ENGINEERING THE EXTRAORDINARY</p>
         </div>
-
-        <p>ENGINEERING THE EXTRAORDINARY</p>
       </div>
-    </div>
-  );
-}
+    );
+  }
 
   return (
     <div className="app">
+      {/* NAVBAR */}
       <header className="navbar">
         <a className="brand" href="#home" onClick={handleNav}>
           ORBIT<span>.</span>
@@ -332,8 +323,8 @@ function App() {
             <div className="visual-label label-top">OBJECT 001 / ORBIT</div>
 
             <div className="hero-product">
-  <Headphones3D />
-</div>
+              <Headphones3D />
+            </div>
 
             <div className="floating-tag tag-top">
               <span className="tag-dot" />
@@ -436,7 +427,7 @@ function App() {
             </div>
           </div>
 
-          {/* THREE TRANSPARENT FLIP PRODUCT CARDS */}
+          {/* PRODUCT FLIP CARDS */}
           <div className="product-cards">
             {products.map((item, index) => (
               <button
@@ -454,7 +445,9 @@ function App() {
                     <span className="flip-number">0{index + 1} / ORBIT</span>
                     <span className="flip-title">{item.name}</span>
                     <span className="flip-type">{item.type}</span>
-                    <span className="flip-description">{item.description}</span>
+                    <span className="flip-description">
+                      {item.description}
+                    </span>
                     <span className="flip-feature">{item.feature}</span>
                     <span className="flip-price">{item.price}</span>
                     <span className="flip-hint">TAP TO DISCOVER ↗</span>
@@ -469,9 +462,7 @@ function App() {
                       <span className="flip-back-description">
                         {item.details}
                       </span>
-                      <span className="flip-back-battery">
-                        {item.battery}
-                      </span>
+                      <span className="flip-back-battery">{item.battery}</span>
                     </span>
                   </span>
                 </span>
@@ -480,117 +471,149 @@ function App() {
           </div>
         </section>
 
+        {/* NEW: CRAFTSMANSHIP — AFTER COLLECTION */}
+        <section className="craftsmanship section-padding" id="craftsmanship">
+          <div className="section-heading">
+            <span className="eyebrow">ENGINEERED WITH INTENTION</span>
+            <h2>
+              Every detail.
+              <br />
+              <span>Every frequency.</span>
+            </h2>
+            <p>
+              Designed around the details you feel, and the sound you never
+              forget.
+            </p>
+          </div>
+
+          <div className="craft-grid">
+            <article className="craft-card">
+              <span className="craft-number">01 / MATERIALS</span>
+              <div className="craft-symbol">◈</div>
+              <h3>Refined by Design</h3>
+              <p>
+                Clean silhouettes, considered finishes, and details made to
+                feel exceptional.
+              </p>
+            </article>
+
+            <article className="craft-card">
+              <span className="craft-number">02 / COMFORT</span>
+              <div className="craft-symbol">◎</div>
+              <h3>Made for More</h3>
+              <p>
+                A considered fit for long listening sessions, from quiet
+                mornings to late nights.
+              </p>
+            </article>
+
+            <article className="craft-card">
+              <span className="craft-number">03 / SOUND</span>
+              <div className="craft-symbol">〰</div>
+              <h3>Feel Every Layer</h3>
+              <p>
+                Discover the detail, depth, and atmosphere behind every track.
+              </p>
+            </article>
+          </div>
+        </section>
+
         {/* TECHNOLOGY */}
         <section className="technology section" id="technology">
-        
-<div className="tech-copy">
-  <p className="eyebrow">
-    <span className="live-dot" /> ENGINEERED BEYOND THE ORDINARY
-  </p>
+          <div className="tech-copy">
+            <p className="eyebrow">
+              <span className="live-dot" /> ENGINEERED BEYOND THE ORDINARY
+            </p>
 
-  <h2>
-    Sound has a universe.
-    <br />
-    <span>We bring it closer.</span>
-  </h2>
+            <h2>
+              Sound has a universe.
+              <br />
+              <span>We bring it closer.</span>
+            </h2>
 
-  <p className="tech-description">
-    Every ORBIT headphone is built around the science of sound.
-    Precision-tuned acoustic drivers reveal the finest details,
-    while adaptive noise cancellation helps silence the world
-    around you. Spatial audio creates a deeper sense of
-    dimension, and intelligent sound control keeps every
-    listening moment effortless.
-  </p>
+            <p className="tech-description">
+              Every ORBIT headphone is built around the science of sound.
+              Precision-tuned acoustic drivers reveal the finest details,
+              while adaptive noise cancellation helps silence the world
+              around you. Spatial audio creates a deeper sense of dimension,
+              and intelligent sound control keeps every listening moment
+              effortless.
+            </p>
 
-  <div className="tech-highlights">
-    <div className="tech-highlight">
-      <span className="tech-highlight-number">01</span>
-      <div>
-        <h4>Precision Audio</h4>
-        <p>Every frequency, carefully tuned.</p>
-      </div>
-    </div>
+            <div className="tech-highlights">
+              <div className="tech-highlight">
+                <span className="tech-highlight-number">01</span>
+                <div>
+                  <h4>Precision Audio</h4>
+                  <p>Every frequency, carefully tuned.</p>
+                </div>
+              </div>
 
-    <div className="tech-highlight">
-      <span className="tech-highlight-number">02</span>
-      <div>
-        <h4>Adaptive Silence</h4>
-        <p>Less outside noise. More of your world.</p>
-      </div>
-    </div>
+              <div className="tech-highlight">
+                <span className="tech-highlight-number">02</span>
+                <div>
+                  <h4>Adaptive Silence</h4>
+                  <p>Less outside noise. More of your world.</p>
+                </div>
+              </div>
 
-    <div className="tech-highlight">
-      <span className="tech-highlight-number">03</span>
-      <div>
-        <h4>Spatial Immersion</h4>
-        <p>Sound that feels beyond the ordinary.</p>
-      </div>
-    </div>
-  </div>
+              <div className="tech-highlight">
+                <span className="tech-highlight-number">03</span>
+                <div>
+                  <h4>Spatial Immersion</h4>
+                  <p>Sound that feels beyond the ordinary.</p>
+                </div>
+              </div>
+            </div>
 
-  <a href="#about" className="text-button">
-    Discover our philosophy <span>→</span>
-  </a>
-</div>
+            <a href="#about" className="text-button">
+              Discover our philosophy <span>→</span>
+            </a>
+          </div>
 
+          {/* SOLAR SYSTEM */}
+          <div className="tech-orb solar-system">
+            <div className="solar-glow" />
 
-          {/* SOLAR-SYSTEM-STYLE ORBIT VISUAL */}
-        
-{/* SOLAR SYSTEM */}
-<div className="tech-orb solar-system">
-  <div className="solar-glow" />
+            <div className="planet-orbit orbit-1">
+              <span className="planet planet-1" />
+            </div>
+            <div className="planet-orbit orbit-2">
+              <span className="planet planet-2" />
+            </div>
+            <div className="planet-orbit orbit-3">
+              <span className="planet planet-3" />
+            </div>
+            <div className="planet-orbit orbit-4">
+              <span className="planet planet-4" />
+            </div>
+            <div className="planet-orbit orbit-5">
+              <span className="planet planet-5" />
+            </div>
+            <div className="planet-orbit orbit-6">
+              <span className="planet planet-6" />
+            </div>
+            <div className="planet-orbit orbit-7">
+              <span className="planet planet-7" />
+            </div>
+            <div className="planet-orbit orbit-8">
+              <span className="planet planet-8" />
+            </div>
+            <div className="planet-orbit orbit-9">
+              <span className="planet planet-9" />
+            </div>
 
-  {/* Orbit rings */}
-  <div className="planet-orbit orbit-1">
-    <span className="planet planet-1" />
-  </div>
+            <div className="solar-sun">
+              <span>O</span>
+            </div>
 
-  <div className="planet-orbit orbit-2">
-    <span className="planet planet-2" />
-  </div>
+            <div className="solar-caption">
+              <span className="solar-caption-dot" />
+              ORBITAL ACOUSTIC SYSTEM
+            </div>
+          </div>
 
-  <div className="planet-orbit orbit-3">
-    <span className="planet planet-3" />
-  </div>
-
-  <div className="planet-orbit orbit-4">
-    <span className="planet planet-4" />
-  </div>
-
-  <div className="planet-orbit orbit-5">
-    <span className="planet planet-5" />
-  </div>
-
-  <div className="planet-orbit orbit-6">
-    <span className="planet planet-6" />
-  </div>
-
-  <div className="planet-orbit orbit-7">
-    <span className="planet planet-7" />
-  </div>
-
-  <div className="planet-orbit orbit-8">
-    <span className="planet planet-8" />
-  </div>
-
-  <div className="planet-orbit orbit-9">
-    <span className="planet planet-9" />
-  </div>
-
-  {/* Sun */}
-  <div className="solar-sun">
-    <span>O</span>
-  </div>
-
-  <div className="solar-caption">
-    <span className="solar-caption-dot" />
-    ORBITAL ACOUSTIC SYSTEM
-  </div>
-</div>
-```
-
-          {/* THREE CLICK-TO-FLIP FEATURE CARDS */}
+          {/* TECHNOLOGY FLIP CARDS */}
           <div className="feature-grid">
             {features.map((feature, index) => (
               <button
@@ -629,14 +652,64 @@ function App() {
                     <span className="feature-description">
                       {feature.description}
                     </span>
-                    <span className="feature-bottom">
-                      {feature.footer}
-                    </span>
+                    <span className="feature-bottom">{feature.footer}</span>
                   </span>
                 </span>
               </button>
             ))}
           </div>
+        </section>
+
+        {/* NEW: CHOOSE YOUR ORBIT — AFTER TECHNOLOGY */}
+        <section className="orbit-compare section-padding" id="compare">
+          <div className="section-heading">
+            <span className="eyebrow">FIND YOUR FREQUENCY</span>
+            <h2>
+              Three ways to <span>feel sound.</span>
+            </h2>
+            <p>Different worlds. One unmistakable ORBIT identity.</p>
+          </div>
+
+          <div className="compare-grid">
+            {products.map((item, index) => (
+              <article
+                className={`compare-card ${
+                  index === 1 ? "compare-featured" : ""
+                }`}
+                key={item.name}
+              >
+                {index === 1 && (
+                  <span className="compare-tag">STUDIO SERIES</span>
+                )}
+
+                <span className="compare-index">0{index + 1}</span>
+                <h3>{item.name}</h3>
+                <p className="compare-type">{item.type}</p>
+
+                <div className="compare-line" />
+
+                <p>{item.description}</p>
+                <strong>{item.price}</strong>
+
+                <button
+                  type="button"
+                  className="compare-select"
+                  onClick={() => {
+                    setActiveProduct(index);
+                    document
+                      .getElementById("collection")
+                      ?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  EXPLORE MODEL ↗
+                </button>
+              </article>
+            ))}
+          </div>
+
+          <p className="compare-note">
+            Explore each model to discover the ORBIT that fits your world.
+          </p>
         </section>
 
         {/* OUR STORY / GLASS BOX */}
@@ -652,10 +725,10 @@ function App() {
               Made for the moments <span>that matter.</span>
             </h2>
             <p>
-              ORBIT began with a simple idea: technology should make
-              everyday life feel extraordinary. We focus on considered
-              design, purposeful innovation and sound that brings people
-              closer to what they love.
+              ORBIT began with a simple idea: technology should make everyday
+              life feel extraordinary. We focus on considered design,
+              purposeful innovation and sound that brings people closer to
+              what they love.
             </p>
             <a className="primary-button" href="#home">
               Back to the beginning <span>↑</span>
@@ -663,42 +736,65 @@ function App() {
           </div>
         </section>
 
-        {/* CLOSING */}
-        <section className="closing-banner">
-          <p className="eyebrow">YOUR WORLD. YOUR SOUND.</p>
-          <h2>Find your orbit.</h2>
-          <a className="primary-button" href="#collection">
-            Explore the collection <span>↗</span>
+        {/* NEW: BRAND MANIFESTO — REPLACES OLD CLOSING BANNER */}
+        <section className="brand-manifesto">
+          <div className="manifesto-orbit" />
+
+          <span className="eyebrow">THIS IS YOUR UNIVERSE</span>
+
+          <h2>
+            The world never stops.
+            <br />
+            <span>Your sound takes you elsewhere.</span>
+          </h2>
+
+          <p>
+            Find your space. Follow your frequency. Make every moment yours.
+          </p>
+
+          <a className="manifesto-link" href="#collection">
+            FIND YOUR ORBIT <span>↗</span>
           </a>
         </section>
       </main>
 
+      {/* SHORT PREMIUM FOOTER */}
       <footer className="footer">
         <div className="footer-top">
-          <a className="brand" href="#home">
-            ORBIT<span>.</span>
-          </a>
-          <p>Thoughtfully engineered for the way you listen.</p>
-          <a href="#home" className="footer-top-link">BACK TO TOP ↑</a>
-        </div>
-
-        <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} ORBIT STUDIO</span>
           <div>
+            <div className="footer-brand">ORBIT</div>
+            <p>Designed for the way you listen.</p>
+          </div>
+
+          <nav className="footer-links" aria-label="Footer navigation">
+            <a href="#home">Home</a>
             <a href="#collection">Collection</a>
             <a href="#technology">Technology</a>
             <a href="#about">Our Story</a>
+          </nav>
+
+          <a className="footer-top-link" href="#home">
+            BACK TO TOP ↑
+          </a>
+        </div>
+
+        <div className="footer-bottom">
+          <span>
+            © {new Date().getFullYear()} ORBIT STUDIO. ALL RIGHTS RESERVED.
+          </span>
+          <div>
+            <span>BUILT AROUND SOUND.</span>
           </div>
-          <span>MADE FOR YOUR FREQUENCY.</span>
         </div>
       </footer>
 
+      {/* NOTIFICATION */}
       {notice && (
         <div className="notice" role="status">
           <span>✓</span> {notice}
           <button
             onClick={() => setNotice("")}
-aria-label="Dismiss message"
+            aria-label="Dismiss message"
           >
             ×
           </button>
